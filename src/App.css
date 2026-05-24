@@ -1,0 +1,77 @@
+.ticks{
+  color: rgb(17, 107, 59);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 50px;
+  font-size: 30px;
+  font-weight: bold;
+ 
+}
+
+.parent-container {
+ display: flex;
+ flex-direction: column;
+ gap: 20px;
+ width: 300px;
+ margin-top: 50px;
+ margin-left: 50px;
+ overflow: hidden;
+}
+
+
+
+label {
+  color: rgb(10, 106, 64);
+  font-size: 18px;
+  font-weight: bold;
+  text-align:left;
+  margin-bottom: 8px;
+  display: block;
+
+  
+}
+
+.name, .lastName, .age {
+  width: 55%;
+  height: 50px;
+  margin-bottom: 15px;
+  margin-left: 0;
+  display: block;
+  border-radius: 5px;
+  
+}
+
+.register-btn {
+  width: 120px;
+  height: 40px;
+  background-color: rgb(36, 94, 56);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  float: left;
+  margin-left: 50px;  
+
+}
+
+.clear-btn{
+  width: 120px;
+  height: 40px;
+  background-color: rgb(209, 16, 16);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  float: left;
+  margin-left: 50px;  
+}
+
+.student-table {
+  width: 80%;
+  margin-top: 50px;
+  margin-left: 50px;
+  border-collapse: collapse;
+}
