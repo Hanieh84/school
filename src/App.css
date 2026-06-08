@@ -1,12 +1,11 @@
 .ticks{
-  color: rgb(17, 107, 59);
+  color: rgb(45, 56, 9);
   display: flex;
   flex-direction: column;
   gap: 30px;
   margin-top: 50px;
   font-size: 30px;
-  font-weight: bold;
- 
+  font-weight: bold; 
 }
 
 .parent-container {
@@ -22,7 +21,7 @@
 
 
 label {
-  color: rgb(10, 106, 64);
+  color:  rgb(45, 56, 9);
   font-size: 18px;
   font-weight: bold;
   text-align:left;
@@ -35,7 +34,7 @@ label {
 .name, .lastName, .age {
   width: 55%;
   height: 50px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   margin-left: 0;
   display: block;
   border-radius: 5px;
@@ -45,12 +44,12 @@ label {
 .register-btn {
   width: 120px;
   height: 40px;
-  background-color: rgb(36, 94, 56);
+  background-color: rgb(54, 130, 81);
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 55px;
   float: left;
   margin-left: 50px;  
 
@@ -59,19 +58,42 @@ label {
 .clear-btn{
   width: 120px;
   height: 40px;
-  background-color: rgb(209, 16, 16);
+  background-color: rgb(212, 58, 58);
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 55px;
   float: left;
   margin-left: 50px;  
 }
 
-.student-table {
+.Students-table, .Teachers-table {
   width: 80%;
-  margin-top: 50px;
+  margin-top: 75px;
   margin-left: 50px;
   border-collapse: collapse;
+  color: rgb(45, 56, 9);
+  
+}
+
+
+
+.menu-btns {
+  display: flex;
+  gap: 15px;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-bottom: 10px;
+  justify-content: center;
+
+}   
+.menu-btns button {
+  width: 120px;
+  height: 40px;
+  background-color: rgb(74, 129, 55);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
