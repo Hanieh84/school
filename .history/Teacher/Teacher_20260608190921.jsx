@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 
 
@@ -8,19 +8,10 @@ function Teachers() {
   const [lastName, setLastName] = useState('')
   const [age, setAge] = useState('')
 
-  useEffect(() => {
-    async function getTeachers() {
-      // fill the empty teachers list from the backend response
-      const apiResponse = await fetch("https://6a26f5d5a84f9d39e9081fbd.mockapi.io/api/teachers")
-      const response = await apiResponse.json()
-      
-      setTeachers(response)
-    }
-
-    getTeachers()
-  }, [])
-
-  
+  // fill the empty teachers list from the backend response
+  const response = fetch("https://6a26f5d5a84f9d39e9081fbd.mockapi.io/api/teachers")
+  // response => [{id: 1, name: 'hanieh', lastName: 'yechizi', age: 18 }]
+  console.log('response:', response)
 
 const handleSubmit = (e) => {
   e.preventDefault();

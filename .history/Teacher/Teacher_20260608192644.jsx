@@ -13,7 +13,9 @@ function Teachers() {
       // fill the empty teachers list from the backend response
       const apiResponse = await fetch("https://6a26f5d5a84f9d39e9081fbd.mockapi.io/api/teachers")
       const response = await apiResponse.json()
-      
+      // response => [{id: 1, name: 'hanieh', lastName: 'yechizi', age: 18 }]
+      console.log('response:', response)
+
       setTeachers(response)
     }
 
