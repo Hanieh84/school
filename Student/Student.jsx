@@ -1,6 +1,4 @@
-import { useState } from 'react'
-
-
+import { useState, useEffect } from 'react'
 
 function Students() {
   const [students, setStudents] = useState([])
@@ -8,76 +6,75 @@ function Students() {
   const [lastName, setLastName] = useState('')
   const [age, setAge] = useState('')
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+  useEffect(() => {
+    async function getStudents() {
+      // موقتاً گذاشتم روی teachers  مطمئن بشیم دیتا میاد بالا
+      const apiResponse = await fetch("https://6a26f5d5a84f9d39e9081fbd.mockapi.io/api/teachers")
+      const response = await apiResponse.json()
+      setStudents(response)
+    }
 
-  const newStudent = {
-    name: name,
-    lastName: lastName,
-    age: age
+    getStudents()
+  }, [])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newStudent = { name, lastName, age }
+    setStudents([...students, newStudent])
+    setName('')
+    setLastName('')
+    setAge('')
   }
-  setStudents([...students , newStudent])
-  setName('')
-  setLastName('')
-  setAge('')
-}   
 
-const handleclear = () => {
-  setStudents([])
-} 
+  const handleClear = () => {
+    setStudents([])
+  }
 
   return (
     <>
-<div className="ticks">Students form</div>
-  
-<form >
-<div className="parent-container">
+      <div className="ticks">Students form</div>
+      
+      <form>
+        <div className="parent-container">
+          <div>
+            <label htmlFor="name">Name</label>
+            <input className='name' value={name} onChange={(e) => setName(e.target.value)} type="text" />
+          </div>
 
-<div >
-<label  htmlFor="name">Name</label>
- <input className='name'   value={name} onChange={(e) => setName(e.target.value)} type="text" />
-</div>
+          <div>
+            <label htmlFor="lastName">Last Name</label>
+            <input className='lastName' value={lastName} onChange={(e) => setLastName(e.target.value)} type="text" />
+          </div>
 
-<div >
- <label htmlFor="lastName">Last Name</label>
- <input className='lastName' value={lastName} onChange={(e) => setLastName(e.target.value)} type="text"/>
-</div>
- 
-<div >
- <label htmlFor="age">Age</label>
- <input className='age' value={age} onChange={(e) => setAge(e.target.value)} type="number"/>
-</div>
+          <div>
+            <label htmlFor="age">Age</label>
+            <input className='age' value={age} onChange={(e) => setAge(e.target.value)} type="number" />
+          </div>
+        </div>
 
-</div>
+        <button className="register-btn" onClick={handleSubmit}>Register</button>
+        <button className="clear-btn" onClick={handleClear}>Clear</button>
+      </form>
 
-<button  className="register-btn" onClick={handleSubmit}>Register</button>
-<button className="clear-btn" onClick={handleclear}>Clear</button>
-
-
-</form>
-
-
-<table className="Students-table">
-  <thead>
-<tr>
-<th>Name</th>
-<th>Last Name</th>
-<th>Age</th>  
-</tr>
-  </thead>
-  <tbody>
-    {students.map((student, index) => (
-      <tr key={index}>
-        <td>{student.name}</td>
-        <td>{student.lastName}</td>
-        <td>{student.age}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
- </>
-    
+      <table className="Students-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map((student, index) => (
+            <tr key={index}>
+              <td>{student.name}</td>
+              <td>{student.lastName}</td>
+              <td>{student.age}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 }
 
