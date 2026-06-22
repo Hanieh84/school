@@ -8,8 +8,9 @@ function Students() {
 
   useEffect(() => {
     async function getStudents() {
-      // موقتاً گذاشتم روی teachers  مطمئن بشیم دیتا میاد بالا
-      const apiResponse = await fetch("https://6a26f5d5a84f9d39e9081fbd.mockapi.io/api/teachers")
+      //https://6a3828afc105017aa639b4b3.mockapi.io/api/students
+      //  موقتاً گذاشتم روی teachers  مطمئن بشیم دیتا میاد بالا
+      const apiResponse = await fetch("hhttps://6a26f5d5a84f9d39e9081fbd.mockapi.io/api/teachers")
       const response = await apiResponse.json()
       setStudents(response)
     }
