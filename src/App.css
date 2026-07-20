@@ -97,3 +97,7 @@ label {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.menu-btns button.active {
+  background-color: blue;
+}

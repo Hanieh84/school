@@ -18,18 +18,18 @@ function Users({ type }) { // Users -> Component -> props -> {....}
     getUsers()
   }, [type])
 
-  const createStudent = useCallback((e) => {
+  const createUser = useCallback((e) => {
     e.preventDefault();
-    const newStudent = { name, lastName, age } // 0x3352, 0x44564
+    const newUser = { name, lastName, age } // 0x3352, 0x44564
 
     async function submitStudent() {
-        const apiUrl = createApiUrl(type)
+      const apiUrl = createApiUrl(type)
       const response = await fetch(apiUrl, {
         method: "POST", 
-        body: JSON.stringify(newStudent)
+        body: JSON.stringify(newUser)
       })
 
-      setUsers([...users, newStudent])
+      setUsers([...users, newUser])
       setName('')
       setLastName('')
       setAge('')
@@ -64,7 +64,7 @@ function Users({ type }) { // Users -> Component -> props -> {....}
           </div>
         </div>
 
-        <button className="register-btn" onClick={createStudent}>Register</button>
+        <button className="register-btn" onClick={createUser}>Register</button>
         <button className="clear-btn" onClick={handleClear}>Clear</button>
       </form>
 

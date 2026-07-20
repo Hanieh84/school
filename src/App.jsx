@@ -10,8 +10,10 @@ function App() {
  return (
     <>
       <div className="menu-btns">
-        <button onClick={() => setPage("student")}>Student</button>
-        <button onClick={() => setPage("teacher")}>Teacher</button> 
+        <button className={page === 'student' ? 'active' : ''} onClick={() => setPage("student")}>Student</button>
+        <button className={page === 'teacher' ? 'active' : ''} onClick={() => setPage("teacher")}>Teacher</button> 
+        <button className={page === 'employee' ? 'active' : ''} onClick={() => setPage("employee")}>Employees</button> 
+        <button className={page === 'parent' ? 'active' : ''} onClick={() => setPage("parent")}>Parents</button> 
       </div>
 
       <Users type={page} />
