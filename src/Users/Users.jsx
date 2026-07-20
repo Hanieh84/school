@@ -45,7 +45,6 @@ function Users({ type }) { // Users -> Component -> props -> {....}
   return (
     <>
       <div className="ticks">Users form</div>
-
       <form>
         <div className="parent-container">
           <div>

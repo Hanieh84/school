@@ -86,8 +86,8 @@ label {
   margin-left: 50px;
   margin-bottom: 10px;
   justify-content: center;
-
 }   
+
 .menu-btns button {
   width: 120px;
   height: 40px;
@@ -98,6 +98,20 @@ label {
   cursor: pointer;
 }
 
+/* CSS Selectors */
+// class selector -> .
+// id selector -> #
+// tag selector -> tag name -> div, button
+
+// pseudo selector -> :hover :active :disabled
+// 
+
+.menu-btns button:hover {
+  background-color: rgb(112, 170, 93);
+  box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
 .menu-btns button.active {
-  background-color: blue;
+  background-color: rgb(48, 80, 36);
 }
