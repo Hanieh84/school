@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import Students from '../Student/Student' 
-import Teachers from '../Teacher/Teacher' 
+import Users from './Users/Users' 
+
 import './App.css'
 
 
@@ -9,15 +9,13 @@ function App() {
   
  return (
     <>
+      <div className="menu-btns">
+        <button onClick={() => setPage("student")}>Student</button>
+        <button onClick={() => setPage("teacher")}>Teacher</button> 
+      </div>
 
-<div className="menu-btns">
-<button onClick={() => setPage("student")}>Student</button>
-<button onClick={() => setPage("teacher")}>Teacher</button> 
-</div>
-  
-{page === "student" ? <Students /> : <Teachers /> }
- </>
-    
+      <Users type={page} />
+    </>
   );
 }
 

@@ -1,40 +1,51 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import { createApiUrl } from '../utils/api' // named import
 
-function Students() {
-  const [students, setStudents] = useState([])
+function Users({ type }) { // Users -> Component -> props -> {....}
+  const [users, setUsers] = useState([]) // useState() ---> [a, b]
   const [name, setName] = useState('')
   const [lastName, setLastName] = useState('')
   const [age, setAge] = useState('')
 
   useEffect(() => {
-    async function getStudents() {
-      //https://6a3828afc105017aa639b4b3.mockapi.io/api/students
-      //  موقتاً گذاشتم روی teachers  مطمئن بشیم دیتا میاد بالا
-      const apiResponse = await fetch("hhttps://6a26f5d5a84f9d39e9081fbd.mockapi.io/api/teachers")
+    async function getUsers() {
+      const apiUrl = createApiUrl(type)
+      const apiResponse = await fetch(apiUrl)
       const response = await apiResponse.json()
-      setStudents(response)
+      setUsers(response)
     }
 
-    getStudents()
-  }, [])
+    getUsers()
+  }, [type])
 
-  const handleSubmit = (e) => {
+  const createStudent = useCallback((e) => {
     e.preventDefault();
-    const newStudent = { name, lastName, age }
-    setStudents([...students, newStudent])
-    setName('')
-    setLastName('')
-    setAge('')
-  }
+    const newStudent = { name, lastName, age } // 0x3352, 0x44564
+
+    async function submitStudent() {
+        const apiUrl = createApiUrl(type)
+      const response = await fetch(apiUrl, {
+        method: "POST", 
+        body: JSON.stringify(newStudent)
+      })
+
+      setUsers([...users, newStudent])
+      setName('')
+      setLastName('')
+      setAge('')
+    }
+
+    submitStudent()
+  }, [name, lastName, age, type])
 
   const handleClear = () => {
-    setStudents([])
+    setUsers([])
   }
 
   return (
     <>
-      <div className="ticks">Students form</div>
-      
+      <div className="ticks">Users form</div>
+
       <form>
         <div className="parent-container">
           <div>
@@ -53,11 +64,11 @@ function Students() {
           </div>
         </div>
 
-        <button className="register-btn" onClick={handleSubmit}>Register</button>
+        <button className="register-btn" onClick={createStudent}>Register</button>
         <button className="clear-btn" onClick={handleClear}>Clear</button>
       </form>
 
-      <table className="Students-table">
+      <table className="Users-table">
         <thead>
           <tr>
             <th>Name</th>
@@ -66,7 +77,7 @@ function Students() {
           </tr>
         </thead>
         <tbody>
-          {students.map((student, index) => (
+          {users.map((student, index) => (
             <tr key={index}>
               <td>{student.name}</td>
               <td>{student.lastName}</td>
@@ -79,4 +90,4 @@ function Students() {
   );
 }
 
-export default Students;
+export default Users;
